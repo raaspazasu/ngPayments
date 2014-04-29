@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="angular.payments.js"></script>
+
+</head>
+
+<body>
+
+<div ng-app="myModule" ng-controller="myController">
+	<h2>{{message}}</h2>
+
+	<div id="credit-card-form" ng-model="creditCard" validate-card>
+		<input type="text" ng-model="creditCard.number" placeholder="{{message}}" format-card/>
+		<br/>
+		Card Type: {{creditCard.type}}<br/>
+		Valid: {{creditCard.valid}}
+		<br/>
+		<h4>CVC:</h4>
+		<input type="text" ng-model="creditCard.cvc" /> {{creditCard.cvcValid}}
+		<br/>
+		<h4>Exp Date</h4>
+		<div>
+			Month:
+			<select ng-model="creditCard.month">
+				<option value="01">01</option>
+				<option value="02">02</option>
+				<option value="03">03</option>
+				<option value="04">04</option>
+				<option value="05">05</option>
+				<option value="06">06</option>
+				<option value="07">07</option>
+				<option value="08">08</option>
+				<option value="09">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+			</select>
+			Year:
+			<select ng-model="creditCard.year">
+				<option>2014</option>
+				<option>2015</option>
+				<option>2016</option>
+				<option>2017</option>
+				<option>2018</option>
+				<option>2019</option>
+				<option>2020</option>
+				<option>2021</option>
+				<option>2022</option>
+			</select>
+			<br/>
+			Exp valid: {{creditCard.expiry}}
+		</div>
+
+		<button ng-disabled="!verified();" > Submit </button>
+
+	</div>
+
+</div>
+
+
+</body>
+</html>
