@@ -162,7 +162,7 @@ angular.module('ngPayments', [])
       }, //validateCardExpiry
 
       validateCVC: function(a, b) {
-        return verCVC = a == b;
+        return verCVC = a.indexOf(b)>-1;
       }
     }
   })
@@ -217,7 +217,7 @@ angular.module('ngPayments', [])
           scope.$watch('ngModel.cvc', function(newValue, oldValue) {
             if(newValue) {
               if(card) {
-                scope.ngModel.cvcValid = $payments.validateCVC(card.cvcLength[0], newValue.length);
+                scope.ngModel.cvcValid = $payments.validateCVC(card.cvcLength, newValue.length);
               }
             }
           }, true);
